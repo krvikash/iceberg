@@ -75,9 +75,9 @@ public class ZOrderByteUtilsBenchmark {
     int outputSize = ZOrderByteUtils.PRIMITIVE_BUFFER_SIZE * 4;
     ByteBuffer outputBuffer = ByteBuffer.allocate(outputSize);
 
-    for (int i = 0; i < fourColumnInput.length; i++) {
+    for (byte[][] bytes : fourColumnInput) {
       byte[] interleavedBytes =
-          ZOrderByteUtils.interleaveBits(fourColumnInput[i], outputSize, outputBuffer);
+              ZOrderByteUtils.interleaveBits(bytes, outputSize, outputBuffer);
       blackhole.consume(interleavedBytes);
     }
   }
@@ -114,9 +114,9 @@ public class ZOrderByteUtilsBenchmark {
     int outputSize = 8;
     ByteBuffer outputBuffer = ByteBuffer.allocate(outputSize);
 
-    for (int i = 0; i < fourColumnInput.length; i++) {
+    for (byte[][] bytes : fourColumnInput) {
       byte[] interleavedBytes =
-          ZOrderByteUtils.interleaveBits(fourColumnInput[i], outputSize, outputBuffer);
+              ZOrderByteUtils.interleaveBits(bytes, outputSize, outputBuffer);
       blackhole.consume(interleavedBytes);
     }
   }
